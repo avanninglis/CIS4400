@@ -1,0 +1,13 @@
+from bs4 import BeautifulSoup
+import requests
+import json
+url = "https://data.cityofnewyork.us/resource/erm2-nwe9.json?$limit=10000"
+response = requests.get(url)
+data = response.json()
+df = pd.json_normalize(data)
+df.to_csv('311Data.csv', index=False) 
+
+# Normalize JSON data into pandas DataFrame
+
+
+print(df)
